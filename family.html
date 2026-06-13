@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Family · Gia Đình Gấu</title>
+    <meta
+      name="description"
+      content="Meet the whole, lovely bunch — six personalities, one couch, and infinite opinions on what to watch. The Bear Family, one by one."
+    />
+    <meta name="theme-color" content="#fbf7f0" />
+    <link rel="icon" type="image/png" href="./img/bear.png" />
+    <script>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add("js");
+        var q = new URLSearchParams(location.search);
+        var reduce =
+          q.get("motion") === "reduce" ||
+          (window.matchMedia &&
+            matchMedia("(prefers-reduced-motion: reduce)").matches);
+        d.classList.add(reduce ? "reduced-motion" : "motion-ok");
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="visually-hidden" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-header__brand" href="./index.html">Gia Đình <span class="accent">Gấu</span></a>
+        <nav class="site-nav" aria-label="Sections">
+          <a href="./story.html">Story</a>
+          <a href="./family.html" aria-current="page">Family</a>
+          <a href="./memories.html">Memories</a>
+          <a href="./place.html">Place</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page page--family" id="main">
+      <section class="page-hero">
+        <div class="page-hero__inner">
+          <span class="eyebrow">The family</span>
+          <h1 class="page-hero__title">The whole, <span class="accent">lovely</span> bunch</h1>
+          <p class="page-hero__lead">
+            Six personalities, one couch, infinite opinions on what to watch.
+            Here they are — one at a time, before they all start talking at once.
+          </p>
+          <a class="page-back" href="./index.html">← Back home</a>
+        </div>
+      </section>
+
+      <!-- Hùng -->
+      <section class="panel panel--profile" data-panel="family">
+        <div class="panel__inner">
+          <article class="profile" data-r>
+            <div class="profile__media">
+              <img class="profile__photo" src="https://picsum.photos/seed/hung-papa/640/800" alt="Portrait of Hùng" width="640" height="800" loading="lazy" />
+            </div>
+            <div class="profile__body">
+              <h2 class="profile__name">Hùng</h2>
+              <span class="profile__role">Papa Bear</span>
+              <div class="profile__bio">
+                <p>Master of weekend pancakes and the world's slowest barbecue. Hùng is the household's designated calm — the one who reads the instructions, labels the leftovers, and somehow always finds the missing shoe.</p>
+                <p>He measures barbecue in hours, not minutes, and counts a Saturday well spent if at least one neighbor wandered over for "just one plate."</p>
+              </div>
+              <dl class="profile__facts">
+                <div class="profile__fact"><dt>Known for</dt><dd>Pancakes the size of dinner plates.</dd></div>
+                <div class="profile__fact"><dt>Never without</dt><dd>A spatula and an opinion about charcoal.</dd></div>
+                <div class="profile__fact"><dt>Catchphrase</dt><dd>"It's done when it's done."</dd></div>
+              </dl>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Mai -->
+      <section class="panel panel--profile" data-panel="family">
+        <div class="panel__inner">
+          <article class="profile profile--flip" data-r>
+            <div class="profile__media">
+              <img class="profile__photo" src="https://picsum.photos/seed/mai-mama/640/800" alt="Portrait of Mai" width="640" height="800" loading="lazy" />
+            </div>
+            <div class="profile__body">
+              <h2 class="profile__name">Mai</h2>
+              <span class="profile__role">Mama Bear</span>
+              <div class="profile__bio">
+                <p>Keeps everyone warm, fed, and somehow always laughing. Mai is the reason the soup always stretches and the front door is never quite locked.</p>
+                <p>She can read a room, a fever, and a fridge with one glance, and she has never in her life let a guest leave hungry — or empty-handed.</p>
+              </div>
+              <dl class="profile__facts">
+                <div class="profile__fact"><dt>Known for</dt><dd>Feeding people who "weren't even hungry."</dd></div>
+                <div class="profile__fact"><dt>Never without</dt><dd>A thermos and a plan B.</dd></div>
+                <div class="profile__fact"><dt>Catchphrase</dt><dd>"Sit, sit — I'll make you a plate."</dd></div>
+              </dl>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Bảo -->
+      <section class="panel panel--profile" data-panel="family">
+        <div class="panel__inner">
+          <article class="profile" data-r>
+            <div class="profile__media">
+              <img class="profile__photo" src="https://picsum.photos/seed/bao-brother/640/800" alt="Portrait of Bảo" width="640" height="800" loading="lazy" />
+            </div>
+            <div class="profile__body">
+              <h2 class="profile__name">Bảo</h2>
+              <span class="profile__role">Big Brother</span>
+              <div class="profile__bio">
+                <p>Lego architect, aspiring astronaut, undefeated at hide-and-seek. Bảo builds cities on the living-room floor and defends them with the seriousness of a city planner.</p>
+                <p>His current project has been "almost finished" for roughly two years, which everyone agrees is exactly how it should be.</p>
+              </div>
+              <dl class="profile__facts">
+                <div class="profile__fact"><dt>Known for</dt><dd>A Lego skyline with its own zip code.</dd></div>
+                <div class="profile__fact"><dt>Never without</dt><dd>A half-built spaceship in one pocket.</dd></div>
+                <div class="profile__fact"><dt>Catchphrase</dt><dd>"I'm not done building yet."</dd></div>
+              </dl>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Linh -->
+      <section class="panel panel--profile" data-panel="family">
+        <div class="panel__inner">
+          <article class="profile profile--flip" data-r>
+            <div class="profile__media">
+              <img class="profile__photo" src="https://picsum.photos/seed/linh-sister/640/800" alt="Portrait of Linh" width="640" height="800" loading="lazy" />
+            </div>
+            <div class="profile__body">
+              <h2 class="profile__name">Linh</h2>
+              <span class="profile__role">Little Sister</span>
+              <div class="profile__bio">
+                <p>Collects stickers, hugs, and oddly specific facts about whales. Linh is the family's smallest and loudest source of joy, and the reigning champion of the dinner-table interruption.</p>
+                <p>She will, given the slightest opening, tell you how a blue whale's heart is the size of a small car. You will remember it forever.</p>
+              </div>
+              <dl class="profile__facts">
+                <div class="profile__fact"><dt>Known for</dt><dd>The whale facts. So many whale facts.</dd></div>
+                <div class="profile__fact"><dt>Never without</dt><dd>A fresh sticker sheet.</dd></div>
+                <div class="profile__fact"><dt>Catchphrase</dt><dd>"Did you know…"</dd></div>
+              </dl>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Bà Ngoại -->
+      <section class="panel panel--profile" data-panel="family">
+        <div class="panel__inner">
+          <article class="profile" data-r>
+            <div class="profile__media">
+              <img class="profile__photo" src="https://picsum.photos/seed/ngoai-grandma/640/800" alt="Portrait of Bà Ngoại" width="640" height="800" loading="lazy" />
+            </div>
+            <div class="profile__body">
+              <h2 class="profile__name">Bà Ngoại</h2>
+              <span class="profile__role">Grandmother</span>
+              <div class="profile__bio">
+                <p>Tells the best stories — and, lovingly, the longest ones. Bà Ngoại is the keeper of every recipe, every birthday, and every grudge she pretends to have let go of.</p>
+                <p>House rule, established by unanimous and slightly fearful agreement: you do not interrupt the story.</p>
+              </div>
+              <dl class="profile__facts">
+                <div class="profile__fact"><dt>Known for</dt><dd>Stories with no discernible ending.</dd></div>
+                <div class="profile__fact"><dt>Never without</dt><dd>A cup of tea slowly going cold.</dd></div>
+                <div class="profile__fact"><dt>Catchphrase</dt><dd>"Now, where was I…"</dd></div>
+              </dl>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Cookie -->
+      <section class="panel panel--profile" data-panel="family">
+        <div class="panel__inner">
+          <article class="profile profile--flip" data-r>
+            <div class="profile__media">
+              <img class="profile__photo" src="https://picsum.photos/seed/cookie-dog/640/800" alt="Photo of Cookie the dog" width="640" height="800" loading="lazy" />
+            </div>
+            <div class="profile__body">
+              <h2 class="profile__name">Cookie</h2>
+              <span class="profile__role">The Dog</span>
+              <div class="profile__bio">
+                <p>Firmly believes every snack is a shared snack. Cookie wandered in one afternoon in 2016, sat down, and has been supervising the kitchen ever since.</p>
+                <p>Officially nobody's responsibility, and unofficially the most important member of the household.</p>
+              </div>
+              <dl class="profile__facts">
+                <div class="profile__fact"><dt>Known for</dt><dd>A snack radar accurate to the millimeter.</dd></div>
+                <div class="profile__fact"><dt>Never without</dt><dd>Hopeful, unwavering eyes.</dd></div>
+                <div class="profile__fact"><dt>Catchphrase</dt><dd>(an enthusiastic tail wag)</dd></div>
+              </dl>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <footer class="site-footer" id="footer" data-panel="family">
+        <div class="site-footer__inner">
+          <p class="site-footer__signoff" data-r>That's everybody.</p>
+          <p class="site-footer__note" data-r>
+            Now come see what this lot gets up to when you point a camera at them.
+          </p>
+          <p class="site-footer__copy" data-r>
+            <a href="./memories.html">Browse the memories →</a>
+          </p>
+          <p class="site-footer__copy" data-r>© <span id="year">2026</span> Gia Đình Gấu · The Bear Family</p>
+        </div>
+      </footer>
+    </main>
+
+    <script type="module" src="/src/page.js"></script>
+  </body>
+</html>
