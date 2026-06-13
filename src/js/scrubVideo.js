@@ -11,8 +11,8 @@ const HAS_RVFC = 'requestVideoFrameCallback' in HTMLVideoElement.prototype;
 function pickSource() {
   // relative paths because vite.config.js uses base:'./' (subpath-host safe)
   return window.matchMedia('(max-width: 768px)').matches
-    ? './video/bear-house-720.mp4'
-    : './video/bear-house-1080.mp4';
+    ? './video/bear-house-mobile.mp4'
+    : './video/bear-house-desktop.mp4';
 }
 
 /* Fetch the whole file into a blob URL so seeking never touches the

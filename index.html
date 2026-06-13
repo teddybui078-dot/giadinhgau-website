@@ -34,54 +34,50 @@
   <body>
     <a class="visually-hidden" href="#story">Skip to content</a>
 
+    <!-- Fixed cinematic backdrop. The clip scrubs across the whole page; all
+         content floats over it. Direct child of <body> so it stays put. -->
+    <div class="scrub-backdrop" aria-hidden="true">
+      <video
+        id="scrub-video"
+        muted
+        playsinline
+        preload="auto"
+        poster="./img/bear-house-first.jpg"
+      ></video>
+      <canvas id="scrub-canvas" hidden></canvas>
+      <div class="scrub-veil"></div>
+    </div>
+
     <main id="top">
-      <!-- ============ HERO: scroll-scrubbed cinematic video ============ -->
-      <section class="hero-video" data-panel="hero">
-        <!-- tall track drives the scrub; .hero-stage is pinned full-viewport -->
-        <div class="hero-track">
-          <div class="hero-stage">
-            <div class="scrub-layer" aria-hidden="true">
-              <video
-                id="scrub-video"
-                muted
-                playsinline
-                preload="auto"
-                poster="./img/bear-house-first.jpg"
-              ></video>
-              <canvas id="scrub-canvas" hidden></canvas>
-            </div>
-            <div class="hero-fade hero-fade--top" aria-hidden="true"></div>
-            <div class="hero-fade hero-fade--bottom" aria-hidden="true"></div>
-            <div class="hero-overlay">
-              <div class="hero-overlay__scrim" aria-hidden="true"></div>
-              <div class="hero-overlay__content">
-                <span class="eyebrow" data-r>Welcome home 🐻</span>
-                <h1 class="wordmark" data-r>Gia Đình <span class="accent">Gấu</span></h1>
-                <p class="hero__sub" data-r>The Bear Family</p>
-                <p class="hero__lead" data-r>
-                  A warm little home for the people we love most — scroll on in.
-                </p>
-              </div>
-              <span class="scroll-hint" aria-hidden="true">
-                <span class="scroll-hint__mouse"></span>
-                Scroll
-              </span>
-            </div>
+      <!-- ============ HERO: wordmark over the opening forest frame ============ -->
+      <section class="hero" data-panel="hero">
+        <div class="hero-overlay">
+          <div class="hero-overlay__scrim" aria-hidden="true"></div>
+          <div class="hero-overlay__content">
+            <span class="eyebrow" data-r>Welcome home</span>
+            <h1 class="wordmark" data-r>Gia Đình <span class="accent">Gấu</span></h1>
+            <p class="hero__sub" data-r>The Bear Family</p>
+            <p class="hero__lead" data-r>
+              A warm little home for the people we love most — scroll on in.
+            </p>
           </div>
+          <span class="scroll-hint" aria-hidden="true">
+            <span class="scroll-hint__mouse"></span>
+            Scroll
+          </span>
         </div>
-        <!-- reduced-motion / no-JS: the bears, held as a still -->
+        <!-- reduced-motion / no-JS: the finale frame, held as a still -->
         <img
           class="hero-poster-static"
           src="./img/bear-house-poster.jpg"
-          alt="The five bears of the Bear Family, hand in hand inside their cabin"
-          width="1080"
-          height="1080"
+          alt="The five bears of the Bear Family, side by side inside their cabin"
+          width="1200"
+          height="1200"
         />
       </section>
 
       <!-- ============ OUR STORY ============ -->
       <section class="panel panel--right panel--text" id="story" data-panel="story">
-        <img class="sticker sticker--story" src="./img/bear.png" alt="" width="104" height="147" loading="lazy" aria-hidden="true" />
         <div class="panel__inner">
           <div class="panel__content">
             <span class="eyebrow" data-r>🍯 Our story</span>
@@ -109,7 +105,7 @@
       <section class="panel panel--left" id="family" data-panel="family">
         <div class="panel__inner">
           <div class="panel__content">
-            <span class="eyebrow" data-r>🐾 The family</span>
+            <span class="eyebrow" data-r>🌿 The family</span>
             <h2 class="panel__title" data-r>The whole, <span class="hl">lovely bunch</span></h2>
             <p class="panel__lead" data-r>
               Six personalities, one couch, infinite opinions on what to watch.
@@ -165,8 +161,8 @@
       <!-- ============ MARQUEE ============ -->
       <div class="marquee" aria-hidden="true">
         <div class="marquee__track">
-          <span>Gia Đình Gấu <i class="star">✦</i> The Bear Family <i class="star">🐾</i> warm &amp; fuzzy since forever <i class="star">✦</i>&nbsp;</span>
-          <span>Gia Đình Gấu <i class="star">✦</i> The Bear Family <i class="star">🐾</i> warm &amp; fuzzy since forever <i class="star">✦</i>&nbsp;</span>
+          <span>Gia Đình Gấu <i class="star">✦</i> The Bear Family <i class="star">✦</i> warm &amp; fuzzy since forever <i class="star">✦</i>&nbsp;</span>
+          <span>Gia Đình Gấu <i class="star">✦</i> The Bear Family <i class="star">✦</i> warm &amp; fuzzy since forever <i class="star">✦</i>&nbsp;</span>
         </div>
       </div>
 
@@ -195,7 +191,6 @@
 
       <!-- ============ A FAVORITE PLACE ============ -->
       <section class="panel panel--left panel--text" id="place" data-panel="place">
-        <img class="sticker sticker--place" src="./img/bear-plain.png" alt="" width="92" height="130" loading="lazy" aria-hidden="true" />
         <div class="panel__inner">
           <div class="panel__content place">
             <div>
@@ -224,9 +219,7 @@
       <!-- ============ FOOTER ============ -->
       <footer class="site-footer" id="footer" data-panel="footer">
         <div class="site-footer__inner">
-          <img class="site-footer__bear" src="./img/bear-plain.png" alt="" width="132" height="187" loading="lazy" data-r />
-          <p class="site-footer__signoff" data-r>Thanks for stopping by! 🐻</p>
-          <p class="site-footer__paws" data-r aria-hidden="true">🐾 🐾 🐾</p>
+          <p class="site-footer__signoff" data-r>Thanks for stopping by!</p>
           <p class="site-footer__note" data-r>
             Made with a lot of love (and a little chaos) by the Bear Family.
           </p>

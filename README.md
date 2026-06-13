@@ -22,44 +22,44 @@ npm run build      # -> dist/  (base: './', deploys to any static host)
 npm run preview    # serve the production build locally
 ```
 
-## The scroll-scrubbed hero
+## The scroll-scrubbed video (plays across the whole page)
 
-[`src/js/heroVideo.js`](src/js/heroVideo.js) pins a full-viewport stage and maps
-scroll progress to the clip's `currentTime` via the renderer in
-[`src/js/scrubVideo.js`](src/js/scrubVideo.js) — which eases `currentTime` in its
-own rAF loop and seeks at most once per *presented* frame (`requestVideoFrame­
-Callback`) so the scrub stays smooth. Tunables at the top of `heroVideo.js`:
-`SCRUB_VH` (scroll length), `HOLD` (how long the bears hold), `FADE_OUT`
-(wordmark fade). `?renderer=canvas` forces the canvas fallback. `prefers-reduced-
-motion` (test with `?motion=reduce`) skips the video entirely and shows the
-bears as a static poster while content scrolls normally.
+The clip is a **fixed full-viewport backdrop**; [`src/js/heroVideo.js`](src/js/heroVideo.js)
+maps whole-page scroll progress (top → bottom) to the clip's `currentTime` via the
+renderer in [`src/js/scrubVideo.js`](src/js/scrubVideo.js) — which eases
+`currentTime` in its own rAF loop and seeks at most once per *presented* frame
+(`requestVideoFrameCallback`) so the scrub stays smooth. Content sections float
+over the backdrop on translucent cards, so the camera pushes through the forest
+to the cabin and reveals the family right as you reach the footer. The hero
+wordmark fades over the first viewport. `?renderer=canvas` forces the canvas
+fallback; `prefers-reduced-motion` (test with `?motion=reduce`) hides the video
+and shows the finale frame as a static poster while content scrolls normally.
 
 ### Video assets (re-encoded for smooth scrubbing)
 
-The hero clip **must be all-intra** (every frame a keyframe) or seeking stutters.
-Re-encode the raw source (`animation-video.mp4`, gitignored) into `public/video/`
-with ffmpeg:
+The clip **must be all-intra** (every frame a keyframe) or seeking stutters.
+Re-encode the raw 4K source (gitignored at the repo root) into `public/video/`:
 
 ```bash
-# desktop 1080² + mobile 720², audio stripped, all-intra, faststart
-ffmpeg -i animation-video.mp4 -an -vf "scale=1080:1080:flags=lanczos,format=yuv420p" \
-  -c:v libx264 -preset slow -crf 20 -g 1 -keyint_min 1 -sc_threshold 0 \
-  -x264-params "no-scenecut=1" -movflags +faststart public/video/bear-house-1080.mp4
-ffmpeg -i animation-video.mp4 -an -vf "scale=720:720:flags=lanczos,format=yuv420p" \
-  -c:v libx264 -preset slow -crf 21 -g 1 -keyint_min 1 -sc_threshold 0 \
-  -x264-params "no-scenecut=1" -movflags +faststart public/video/bear-house-720.mp4
-# posters
-ffmpeg -sseof -0.1 -i animation-video.mp4 -frames:v 1 -vf "scale=1080:1080:flags=lanczos" -q:v 3 public/img/bear-house-poster.jpg
-ffmpeg -i animation-video.mp4 -frames:v 1 -vf "scale=1080:1080:flags=lanczos" -q:v 3 public/img/bear-house-first.jpg
+# desktop 1440² + mobile 864², audio stripped, all-intra, faststart
+ffmpeg -i animationvid-v2-4k.mp4 -an -vf "scale=1440:1440:flags=lanczos,format=yuv420p" \
+  -c:v libx264 -preset slow -crf 22 -g 1 -keyint_min 1 -sc_threshold 0 \
+  -x264-params "no-scenecut=1" -movflags +faststart public/video/bear-house-desktop.mp4
+ffmpeg -i animationvid-v2-4k.mp4 -an -vf "scale=864:864:flags=lanczos,format=yuv420p" \
+  -c:v libx264 -preset slow -crf 24 -g 1 -keyint_min 1 -sc_threshold 0 \
+  -x264-params "no-scenecut=1" -movflags +faststart public/video/bear-house-mobile.mp4
+# posters: finale frame (poster) + opening frame (<video poster>)
+ffmpeg -sseof -0.1 -i animationvid-v2-4k.mp4 -frames:v 1 -vf "scale=1200:1200:flags=lanczos" -q:v 3 public/img/bear-house-poster.jpg
+ffmpeg -i animationvid-v2-4k.mp4 -frames:v 1 -vf "scale=1200:1200:flags=lanczos" -q:v 3 public/img/bear-house-first.jpg
 ```
 
-To swap the clip, drop a new `animation-video.mp4` in the root and re-run the
-commands above (`pickSource()` in `scrubVideo.js` chooses 720 vs 1080 by width).
+To swap the clip, drop a new source mp4 at the root and re-run the commands above
+(`pickSource()` in `scrubVideo.js` chooses mobile vs desktop by width).
 
 ## Project layout
 
 ```
-index.html                 hero-video (track/stage/video/overlay/poster) + sections
+index.html                 fixed .scrub-backdrop (video) + hero overlay + sections
 src/
   main.js                  boot: CSS imports, reduced-motion branch, initHeroVideo
   js/

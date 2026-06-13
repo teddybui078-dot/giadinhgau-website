@@ -5,9 +5,8 @@
 .panel {
   position: relative;
   padding-block: var(--space-section);
-}
-.panel:nth-child(even of .panel) {
-  background: linear-gradient(180deg, transparent, rgba(244, 236, 224, 0.5) 14% 86%, transparent);
+  /* transparent — the fixed video backdrop shows through the gaps between
+     the floating content cards (see playful.css / hero-video.css) */
 }
 
 .panel__inner {

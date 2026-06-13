@@ -1,6 +1,6 @@
-/* Playful layer — color pops, pill labels, soft section washes, sticker bears,
-   a marquee, and bouncy accents. Loaded after components/sections so it layers
-   on top of the clean base. Each content section carries an --accent. */
+/* Playful layer — color pops, pill labels, translucent content cards that float
+   over the video backdrop, a marquee, and bouncy accents. Each content section
+   carries an --accent. */
 
 [data-panel] {
   --accent: var(--bear-brown);
@@ -11,15 +11,15 @@
 [data-panel="memories"] { --accent: var(--berry); --accent-soft: var(--berry-soft); }
 [data-panel="place"]    { --accent: var(--sky);   --accent-soft: var(--sky-soft); }
 
-/* gentle full-section colour wash, fading into cream between sections */
-.panel {
-  background: linear-gradient(
-    180deg,
-    var(--cream) 0%,
-    color-mix(in srgb, var(--accent-soft) 72%, var(--cream)) 15%,
-    color-mix(in srgb, var(--accent-soft) 72%, var(--cream)) 85%,
-    var(--cream) 100%
-  );
+/* content floats over the video on a translucent, faintly-tinted cream card,
+   so the animation stays visible in the generous gaps between sections */
+.panel__content,
+.site-footer__inner {
+  background: color-mix(in srgb, var(--accent-soft) 22%, rgba(251, 247, 240, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.6rem, 4vw, 3rem);
+  box-shadow: 0 28px 70px -36px rgba(60, 45, 35, 0.55);
 }
 
 /* eyebrow → playful pill chip in the section accent */
@@ -44,47 +44,14 @@
   border-radius: 0.25em;
 }
 
-/* ---------- decorative bear stickers ---------- */
-.sticker {
-  position: absolute;
-  z-index: 2;
-  pointer-events: none;
-  height: auto;
-  filter: drop-shadow(0 14px 18px rgba(123, 84, 53, 0.28));
-}
-.sticker--story {
-  width: clamp(64px, 9vw, 104px);
-  top: clamp(1rem, 5vh, 3rem);
-  right: clamp(1rem, 6vw, 5rem);
-  transform: rotate(9deg);
-}
-.sticker--place {
-  width: clamp(58px, 8vw, 92px);
-  bottom: clamp(1rem, 5vh, 3rem);
-  right: clamp(1rem, 7vw, 6rem);
-  transform: rotate(-8deg);
-}
-.motion-ok .sticker--story { animation: bob-a 4.2s var(--ease-in-out-quint) infinite; }
-.motion-ok .sticker--place { animation: bob-b 5s var(--ease-in-out-quint) infinite; }
-@keyframes bob-a {
-  0%, 100% { transform: rotate(9deg) translateY(0); }
-  50% { transform: rotate(6deg) translateY(-12px); }
-}
-@keyframes bob-b {
-  0%, 100% { transform: rotate(-8deg) translateY(0); }
-  50% { transform: rotate(-11deg) translateY(-10px); }
-}
-@media (max-width: 700px) {
-  .sticker { display: none; } /* keep phones uncluttered */
-}
-
 /* ---------- marquee strip ---------- */
 .marquee {
+  position: relative;
+  z-index: 1;
   overflow: hidden;
   background: var(--bear-brown);
   color: var(--cream);
   padding-block: clamp(0.9rem, 2.2vh, 1.4rem);
-  border-block: 0 solid transparent;
   display: flex;
 }
 .marquee__track {
@@ -101,22 +68,11 @@
 }
 .motion-ok .marquee__track { animation: marquee 26s linear infinite; }
 .marquee__track > span { display: inline-flex; align-items: center; gap: 2.2rem; }
-.marquee .star { color: var(--honey); }
+.marquee .star { color: var(--honey); font-style: normal; }
 @keyframes marquee {
   to { transform: translateX(-50%); }
 }
 
-/* ---------- footer playfulness ---------- */
-.site-footer__bear {
-  width: clamp(96px, 14vw, 132px) !important;
-}
-.site-footer__paws {
-  font-size: 1.5rem;
-  letter-spacing: 0.4rem;
-  margin-top: 0.25rem;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .sticker { animation: none !important; }
   .marquee__track { animation: none !important; }
 }

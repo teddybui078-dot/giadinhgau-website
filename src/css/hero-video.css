@@ -1,32 +1,12 @@
-/* Scroll-scrubbed full-bleed hero video.
-   .hero-track (tall) drives the scrub; .hero-stage is pinned full-viewport and
-   holds the video; an overlay wordmark fades out as the scrub begins. */
+/* Fixed cinematic backdrop — the clip scrubs across the whole page while all
+   content floats over it (see heroVideo.js). */
 
-.hero-video {
-  position: relative;
-  background: var(--cream);
-}
-
-/* plain wrapper — the scroll distance comes from the pin's spacer in
-   heroVideo.js (SCRUB_VH), not from a tall track */
-.hero-track {
-  position: relative;
-}
-
-.hero-stage {
-  position: relative;
-  height: 100vh;
-  height: 100svh; /* avoids the iOS URL-bar height jump */
-  width: 100%;
-  overflow: clip;
-  background: var(--cream); /* any sub-pixel cover gap reads as cream */
-}
-
-/* ---- the video (full-bleed cover; square is centre-cropped) ---- */
-.scrub-layer {
-  position: absolute;
+.scrub-backdrop {
+  position: fixed;
   inset: 0;
   z-index: 0;
+  background: var(--cream); /* shows behind during load / letterbox-safe */
+  overflow: clip;
 }
 #scrub-video,
 #scrub-canvas {
@@ -38,31 +18,32 @@
   object-position: center;
   display: block;
 }
-
-/* ---- cream feathers easing the video into the page (and aiding legibility) ---- */
-.hero-fade {
+/* a whisper of cream over the video unifies it with the page + lifts text */
+.scrub-veil {
   position: absolute;
-  left: 0;
-  right: 0;
-  z-index: 1;
+  inset: 0;
   pointer-events: none;
-}
-.hero-fade--top {
-  top: 0;
-  height: clamp(70px, 14vh, 180px);
-  background: linear-gradient(to bottom, var(--cream) 0%, rgba(251, 247, 240, 0) 100%);
-}
-.hero-fade--bottom {
-  bottom: 0;
-  height: clamp(90px, 18vh, 220px);
-  background: linear-gradient(to top, var(--cream) 0%, rgba(251, 247, 240, 0) 100%);
+  background:
+    linear-gradient(180deg, rgba(251, 247, 240, 0.32) 0%, rgba(251, 247, 240, 0.12) 22%, rgba(251, 247, 240, 0.12) 80%, rgba(251, 247, 240, 0.34) 100%);
 }
 
-/* ---- overlay wordmark (fades out via JS over the first ~12% of the scrub) ---- */
+/* everything in <main> floats above the backdrop */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Hero (first viewport): wordmark over the opening frame ---------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+}
 .hero-overlay {
   position: absolute;
   inset: 0;
-  z-index: 3;
+  z-index: 1;
   display: grid;
   place-items: center;
   text-align: center;
@@ -72,11 +53,9 @@
 .hero-overlay__scrim {
   position: absolute;
   inset: 0;
-  z-index: 0;
   pointer-events: none;
-  /* gentle ink vignette focused where the wordmark sits */
   background: radial-gradient(
-    130% 80% at 50% 40%,
+    130% 80% at 50% 42%,
     rgba(43, 35, 32, 0.46) 0%,
     rgba(43, 35, 32, 0.16) 46%,
     transparent 76%
@@ -87,83 +66,51 @@
   z-index: 1;
   max-width: 46rem;
 }
-
-/* light text for legibility over the misty first frame */
 .hero-overlay .eyebrow {
   color: #f0dcc4;
 }
-.hero-overlay .eyebrow::before {
-  background: currentColor;
-}
+.hero-overlay .eyebrow::before { background: currentColor; }
 .hero-overlay .wordmark {
   color: var(--cream);
-  text-shadow: 0 1px 26px rgba(43, 35, 32, 0.5);
+  text-shadow: 0 1px 26px rgba(43, 35, 32, 0.55);
 }
-.hero-overlay .wordmark .accent {
-  color: #e7ac6b; /* brighter warm gold reads on the dark scrim */
-}
-.hero-overlay .hero__sub {
-  color: rgba(251, 247, 240, 0.92);
-}
-.hero-overlay .hero__lead {
-  color: rgba(251, 247, 240, 0.82);
-  margin-inline: auto;
-}
-.hero-overlay .scroll-hint {
-  color: rgba(251, 247, 240, 0.78);
-}
+.hero-overlay .wordmark .accent { color: #e7ac6b; }
+.hero-overlay .hero__sub { color: rgba(251, 247, 240, 0.92); }
+.hero-overlay .hero__lead { color: rgba(251, 247, 240, 0.82); margin-inline: auto; }
+.hero-overlay .scroll-hint { color: rgba(251, 247, 240, 0.8); }
 
-/* static last-frame poster, only for reduced-motion / no-JS */
-.hero-poster-static {
-  display: none;
-}
+.hero-poster-static { display: none; }
 
 /* ========================================================================
-   Reduced motion / no JS: no pin, no scrub. Collapse the track, hide the
-   video, render the wordmark as a normal hero header on cream, and show the
-   bears poster, then content flows normally.
+   Reduced motion / no JS: no scrub. Hide the video backdrop, show the finale
+   poster, render the hero as a normal cream header, content flows normally.
    ===================================================================== */
-:where(html.reduced-motion, html:not(.js)) .hero-track {
-  height: auto;
-}
-:where(html.reduced-motion, html:not(.js)) .hero-stage {
-  position: static;
-  height: auto;
-  padding-block: clamp(5rem, 12vh, 8rem) 0;
-}
-:where(html.reduced-motion, html:not(.js)) .scrub-layer,
-:where(html.reduced-motion, html:not(.js)) .hero-fade,
-:where(html.reduced-motion, html:not(.js)) .hero-overlay__scrim {
+:where(html.reduced-motion, html:not(.js)) .scrub-backdrop {
   display: none;
+}
+:where(html.reduced-motion, html:not(.js)) body {
+  background: var(--cream);
+}
+:where(html.reduced-motion, html:not(.js)) .hero {
+  min-height: 0;
+  padding-block: clamp(5rem, 12vh, 8rem) 0;
 }
 :where(html.reduced-motion, html:not(.js)) .hero-overlay {
   position: static;
   opacity: 1 !important;
   padding: 0 clamp(1.25rem, 5vw, 3rem);
 }
-/* on cream now, so restore the brand (dark) text colours */
-:where(html.reduced-motion, html:not(.js)) .hero-overlay .eyebrow {
-  color: var(--bear-brown);
-}
-:where(html.reduced-motion, html:not(.js)) .hero-overlay .wordmark {
-  color: var(--ink);
-  text-shadow: none;
-}
-:where(html.reduced-motion, html:not(.js)) .hero-overlay .wordmark .accent {
-  color: var(--bear-brown);
-}
-:where(html.reduced-motion, html:not(.js)) .hero-overlay .hero__sub {
-  color: var(--ink-soft);
-}
-:where(html.reduced-motion, html:not(.js)) .hero-overlay .hero__lead {
-  color: var(--ink-soft);
-}
-:where(html.reduced-motion, html:not(.js)) .hero-overlay .scroll-hint {
-  display: none;
-}
+:where(html.reduced-motion, html:not(.js)) .hero-overlay__scrim { display: none; }
+/* restore brand (dark) text on cream */
+:where(html.reduced-motion, html:not(.js)) .hero-overlay .eyebrow { color: var(--bear-brown); }
+:where(html.reduced-motion, html:not(.js)) .hero-overlay .wordmark { color: var(--ink); text-shadow: none; }
+:where(html.reduced-motion, html:not(.js)) .hero-overlay .wordmark .accent { color: var(--bear-brown); }
+:where(html.reduced-motion, html:not(.js)) .hero-overlay .hero__sub { color: var(--ink-soft); }
+:where(html.reduced-motion, html:not(.js)) .hero-overlay .hero__lead { color: var(--ink-soft); }
+:where(html.reduced-motion, html:not(.js)) .hero-overlay .scroll-hint { display: none; }
 :where(html.reduced-motion, html:not(.js)) .hero-poster-static {
   display: block;
-  width: min(86vmin, 560px);
+  width: min(86vmin, 580px);
   height: auto;
   margin: clamp(2rem, 5vh, 3.5rem) auto 0;
   border-radius: var(--radius-lg);
