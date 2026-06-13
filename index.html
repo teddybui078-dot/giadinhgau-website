@@ -10,9 +10,9 @@
     />
     <meta name="theme-color" content="#fbf7f0" />
     <meta property="og:title" content="Gia Đình Gấu · The Bear Family" />
-    <meta property="og:description" content="Our story, our people, and the places we love — with a bear who tags along as you scroll." />
+    <meta property="og:description" content="Our story, our people, and the places we love — scroll through a misty forest and meet the whole bear family." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="./img/bear.png" />
+    <meta property="og:image" content="./img/bear-house-poster.jpg" />
     <link rel="icon" type="image/png" href="./img/bear.png" />
 
     <!-- Decide reduced-motion BEFORE first paint so nothing animates in then
@@ -34,48 +34,50 @@
   <body>
     <a class="visually-hidden" href="#story">Skip to content</a>
 
-    <!-- The scroll companion. Direct child of <body> (no transformed ancestor)
-         so position:fixed stays true and MotionPath owns its transform. -->
-    <div id="bear" aria-hidden="true">
-      <img
-        class="bear-img"
-        src="./img/bear.png"
-        alt=""
-        width="132"
-        height="187"
-        decoding="async"
-      />
-    </div>
-
     <main id="top">
-      <!-- ============ HERO ============ -->
-      <header class="hero panel--left" data-panel="hero">
-        <div class="hero__inner">
-          <div class="hero__content">
-            <span class="eyebrow hero__eyebrow" data-r>Welcome to our den</span>
-            <h1 class="wordmark" data-r>
-              Gia Đình <span class="accent">Gấu</span>
-            </h1>
-            <p class="hero__sub" data-r>The Bear Family</p>
-            <p class="hero__lead" data-r>
-              A small, warm place for the people we love most — our story, our
-              everyday, and the spots we keep coming back to. Make a cup of
-              something hot and scroll on through.
-            </p>
-            <div class="hero__cta" data-r>
-              <a class="btn" href="#family">
-                Meet the family
-                <span class="btn__arrow" aria-hidden="true">→</span>
-              </a>
-              <a class="btn btn--ghost" href="#story">Our story</a>
+      <!-- ============ HERO: scroll-scrubbed cinematic video ============ -->
+      <section class="hero-video" data-panel="hero">
+        <!-- tall track drives the scrub; .hero-stage is pinned full-viewport -->
+        <div class="hero-track">
+          <div class="hero-stage">
+            <div class="scrub-layer" aria-hidden="true">
+              <video
+                id="scrub-video"
+                muted
+                playsinline
+                preload="auto"
+                poster="./img/bear-house-first.jpg"
+              ></video>
+              <canvas id="scrub-canvas" hidden></canvas>
+            </div>
+            <div class="hero-fade hero-fade--top" aria-hidden="true"></div>
+            <div class="hero-fade hero-fade--bottom" aria-hidden="true"></div>
+            <div class="hero-overlay">
+              <div class="hero-overlay__scrim" aria-hidden="true"></div>
+              <div class="hero-overlay__content">
+                <span class="eyebrow" data-r>Welcome to our den</span>
+                <h1 class="wordmark" data-r>Gia Đình <span class="accent">Gấu</span></h1>
+                <p class="hero__sub" data-r>The Bear Family</p>
+                <p class="hero__lead" data-r>
+                  A warm little home for the people we love most — scroll on in.
+                </p>
+              </div>
+              <span class="scroll-hint" aria-hidden="true">
+                <span class="scroll-hint__mouse"></span>
+                Scroll
+              </span>
             </div>
           </div>
         </div>
-        <span class="scroll-hint" aria-hidden="true">
-          <span class="scroll-hint__mouse"></span>
-          Scroll
-        </span>
-      </header>
+        <!-- reduced-motion / no-JS: the bears, held as a still -->
+        <img
+          class="hero-poster-static"
+          src="./img/bear-house-poster.jpg"
+          alt="The five bears of the Bear Family, hand in hand inside their cabin"
+          width="1080"
+          height="1080"
+        />
+      </section>
 
       <!-- ============ OUR STORY ============ -->
       <section class="panel panel--right panel--text" id="story" data-panel="story">

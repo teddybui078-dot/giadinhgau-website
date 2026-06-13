@@ -2,7 +2,7 @@ import './css/tokens.css';
 import './css/base.css';
 import './css/components.css';
 import './css/sections.css';
-import './css/bear.css';
+import './css/hero-video.css';
 
 import { prefersReducedMotion } from './js/reducedMotion.js';
 
@@ -13,22 +13,20 @@ async function boot() {
 
   const reduced = prefersReducedMotion();
 
-  // The bear always initialises — it decides internally whether to travel with
-  // scroll or just idle-bob in the corner (reduced motion / very small screens).
-  const { initBear } = await import('./js/bear.js');
-  const bear = initBear({ reduced });
-
   const { initReveals } = await import('./js/reveal.js');
   initReveals({ reduced });
 
+  // Reduced motion: no video, no pin, no scrub. The hero-video.css branch shows
+  // the bears poster as a still and everything scrolls normally.
   if (reduced) return;
 
-  // Section heights settle after webfonts + lazy images land; the bear path's
-  // gap alignment + ScrollTrigger's end depend on document height, so rebuild
-  // the path once everything is in rather than on every image.
+  const { initHeroVideo } = await import('./js/heroVideo.js');
+  await initHeroVideo();
+
+  // Section heights settle after webfonts land; ScrollTrigger's pin/reveal
+  // geometry depends on document height, so refresh once they're in.
   const { ScrollTrigger } = await import('gsap/ScrollTrigger');
   document.fonts?.ready.then(() => ScrollTrigger.refresh());
-  window.addEventListener('load', () => bear?.scheduleRefresh?.());
 }
 
 boot();
