@@ -14,6 +14,16 @@
   --line: #e8e1d6; /* hairline borders */
   --line-soft: #f0ebe2;
 
+  /* Playful accent palette — pops of fun, used sparingly per section */
+  --honey: #ef9f2e;
+  --honey-soft: #fdeac5;
+  --sage: #6f9e5f;
+  --sage-soft: #e3eed8;
+  --berry: #df7b75;
+  --berry-soft: #f9e0dc;
+  --sky: #5ba3c9;
+  --sky-soft: #dcedf5;
+
   /* Typography — Apple system stack with graceful fallbacks */
   --font-display: -apple-system, "SF Pro Display", BlinkMacSystemFont, "Segoe UI",
     "Helvetica Neue", sans-serif;
@@ -33,10 +43,10 @@
   --maxw: 1180px;
   --maxw-col: 34rem; /* offset reading column — keeps a gutter for the bear */
 
-  /* Shape */
-  --radius-lg: 1.75rem;
-  --radius-md: 1.15rem;
-  --radius-sm: 0.7rem;
+  /* Shape — generous & rounded for a softer, friendlier feel */
+  --radius-lg: 2rem;
+  --radius-md: 1.4rem;
+  --radius-sm: 0.95rem;
 
   /* Soft, brown-tinted shadows (no harsh grey) */
   --shadow-sm: 0 2px 8px -3px rgba(123, 84, 53, 0.14);

@@ -20,13 +20,15 @@ export function initReveals({ reduced }) {
 
     gsap.fromTo(
       items,
-      { autoAlpha: 0, y: 38 },
+      { autoAlpha: 0, y: 42 },
       {
         autoAlpha: 1,
         y: 0,
-        duration: 0.6,
-        ease: 'power3.out',
-        stagger: 0.08,
+        duration: 0.7,
+        ease: 'back.out(1.5)', // a little bounce as things land
+        stagger: 0.09,
+        // clear the inline transform on finish so CSS hovers/tilts take over
+        clearProps: 'transform',
         scrollTrigger: {
           trigger: group,
           start: 'top 82%',

@@ -4,7 +4,8 @@
 !.env.example
 
 # --- Raw video/image sources (re-encoded into public/ via scripts; too big to track) ---
-/animation-video.mp4
+# runtime videos live in public/video/ — raw sources dropped at the repo root are ignored
+/*.mp4
 /housev1start.png
 
 # --- Dependencies ---

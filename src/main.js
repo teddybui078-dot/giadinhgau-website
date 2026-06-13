@@ -2,6 +2,7 @@ import './css/tokens.css';
 import './css/base.css';
 import './css/components.css';
 import './css/sections.css';
+import './css/playful.css';
 import './css/hero-video.css';
 
 import { prefersReducedMotion } from './js/reducedMotion.js';
