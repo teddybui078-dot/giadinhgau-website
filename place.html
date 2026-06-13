@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Favorite Place · Gia Đình Gấu</title>
+    <meta
+      name="description"
+      content="The cabin by Pine Lake — two hours north, past the gas station with the good donuts. Cold water, worse wifi, and nobody wants to leave."
+    />
+    <meta name="theme-color" content="#fbf7f0" />
+    <link rel="icon" type="image/png" href="./img/bear.png" />
+    <script>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add("js");
+        var q = new URLSearchParams(location.search);
+        var reduce =
+          q.get("motion") === "reduce" ||
+          (window.matchMedia &&
+            matchMedia("(prefers-reduced-motion: reduce)").matches);
+        d.classList.add(reduce ? "reduced-motion" : "motion-ok");
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="visually-hidden" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-header__brand" href="./index.html">Gia Đình <span class="accent">Gấu</span></a>
+        <nav class="site-nav" aria-label="Sections">
+          <a href="./story.html">Story</a>
+          <a href="./family.html">Family</a>
+          <a href="./memories.html">Memories</a>
+          <a href="./place.html" aria-current="page">Place</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page page--place" id="main">
+      <section class="page-hero">
+        <div class="page-hero__inner">
+          <span class="eyebrow">A favorite place</span>
+          <h1 class="page-hero__title">The cabin by <span class="accent">Pine Lake</span></h1>
+          <p class="page-hero__lead">
+            Two hours north, past the gas station with the good donuts. The water
+            is cold, the wifi is worse, and nobody ever wants to leave.
+          </p>
+          <a class="page-back" href="./index.html">← Back home</a>
+        </div>
+      </section>
+
+      <!-- The cabin -->
+      <section class="panel" data-panel="place">
+        <div class="panel__inner">
+          <div class="section-head">
+            <span class="eyebrow" data-r>The cabin</span>
+            <h2 class="panel__title" data-r>A little place that <span class="hl">holds everyone</span></h2>
+          </div>
+          <div class="prose">
+            <p data-r>
+              It is not a big cabin. It has a porch that fits four if two of them
+              are friendly, a kitchen that has hosted more arguments about board
+              games than anywhere on earth, and a screen door that has never once
+              closed quietly.
+            </p>
+            <p data-r>
+              We found it in 2021 and have been coming back ever since. The lake
+              is freezing in June and somehow colder in August. There is exactly
+              one bar of signal, and you have to stand on the second porch step to
+              get it, which everyone agrees is a feature, not a problem.
+            </p>
+          </div>
+          <div class="map-card" data-r role="img" aria-label="Map showing the cabin by Pine Lake">
+            <svg class="map-card__route" viewBox="0 0 100 56" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M6 50 C 28 44, 30 18, 52 20 S 82 12, 94 8" fill="none" stroke="#5ba3c9" stroke-width="1.1" stroke-dasharray="3 3" stroke-linecap="round" opacity="0.8" />
+            </svg>
+            <span class="map-card__pin">
+              <span class="map-card__dot" aria-hidden="true"></span>
+              Pine Lake Cabin
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- What we do there -->
+      <section class="panel" data-panel="place">
+        <div class="panel__inner">
+          <div class="section-head">
+            <span class="eyebrow" data-r>The itinerary</span>
+            <h2 class="panel__title" data-r>What we actually <span class="hl">do up there</span></h2>
+            <p class="panel__lead" data-r>
+              Ambitious plans are made on the drive up. None of them survive
+              contact with the porch.
+            </p>
+          </div>
+          <div class="highlights">
+            <div class="highlight" data-r>
+              <div class="highlight__icon">1</div>
+              <h3 class="highlight__title">Brave the lake</h3>
+              <p class="highlight__text">Someone always swears the water "isn't that cold." Someone is always wrong, loudly, and immediately.</p>
+            </div>
+            <div class="highlight" data-r>
+              <div class="highlight__icon">2</div>
+              <h3 class="highlight__title">Lose at board games</h3>
+              <p class="highlight__text">The rules are house rules, the stakes are personal, and at least one alliance ends in tears every visit.</p>
+            </div>
+            <div class="highlight" data-r>
+              <div class="highlight__icon">3</div>
+              <h3 class="highlight__title">Eat far too much</h3>
+              <p class="highlight__text">The slowest barbecue in the known world, followed by the kind of nap that feels earned.</p>
+            </div>
+            <div class="highlight" data-r>
+              <div class="highlight__icon">4</div>
+              <h3 class="highlight__title">Do absolutely nothing</h3>
+              <p class="highlight__text">The best part. No signal, no schedule, just the screen door and the sound of the lake.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Getting there -->
+      <section class="panel" data-panel="place">
+        <div class="panel__inner">
+          <div class="prose">
+            <span class="eyebrow" data-r>Getting there</span>
+            <p class="lead-line" data-r>
+              Head north until the radio gives up, then a little further.
+            </p>
+            <p data-r>
+              Take the highway out of the city for about an hour and a half. When
+              you pass the gas station with the good donuts, stop — that part is
+              not optional. Then it's another half hour of smaller and smaller
+              roads until the pavement turns to gravel and the trees close in.
+            </p>
+            <p data-r>
+              You'll know you're close when the phone goes quiet. The cabin is the
+              one with the crooked porch light and somebody already waving from
+              the steps.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer" id="footer" data-panel="place">
+        <div class="site-footer__inner">
+          <p class="site-footer__signoff" data-r>That's the whole tour.</p>
+          <p class="site-footer__note" data-r>
+            Thanks for wandering through. The door's always open — come back soon.
+          </p>
+          <p class="site-footer__copy" data-r>
+            <a href="./index.html">← Back to the start</a>
+          </p>
+          <p class="site-footer__copy" data-r>© <span id="year">2026</span> Gia Đình Gấu · The Bear Family</p>
+        </div>
+      </footer>
+    </main>
+
+    <script type="module" src="/src/page.js"></script>
+  </body>
+</html>
