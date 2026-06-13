@@ -1,0 +1,52 @@
+/* Brand tokens — the whole palette + motion language lives here.
+   Light mode, warm, Apple-clean. Brown is an accent, not a flood. */
+:root {
+  /* Color */
+  --cream: #fbf7f0; /* page background */
+  --cream-deep: #f4ece0; /* recessed surfaces, alt rows */
+  --paper: #ffffff; /* cards / raised surfaces */
+  --ink: #2b2320; /* body text — never #000 */
+  --ink-soft: #6b5f55; /* secondary text */
+  --ink-faint: #9b9089; /* captions, meta */
+  --bear-brown: #9b6b43; /* primary accent */
+  --bear-brown-deep: #7d5435; /* hover / pressed accent */
+  --bear-cream: #f0e3cf; /* warm tint fill */
+  --line: #e8e1d6; /* hairline borders */
+  --line-soft: #f0ebe2;
+
+  /* Typography — Apple system stack with graceful fallbacks */
+  --font-display: -apple-system, "SF Pro Display", BlinkMacSystemFont, "Segoe UI",
+    "Helvetica Neue", sans-serif;
+  --font-text: -apple-system, "SF Pro Text", BlinkMacSystemFont, "Segoe UI",
+    "Helvetica Neue", sans-serif;
+
+  /* Fluid type scale */
+  --fs-display: clamp(2.75rem, 7vw, 5.5rem);
+  --fs-h2: clamp(1.9rem, 4vw, 3rem);
+  --fs-h3: clamp(1.25rem, 2vw, 1.6rem);
+  --fs-lead: clamp(1.1rem, 1.6vw, 1.4rem);
+  --fs-body: 1.0625rem;
+  --fs-small: 0.875rem;
+
+  /* Spacing rhythm */
+  --space-section: clamp(7rem, 14vh, 11rem);
+  --maxw: 1180px;
+  --maxw-col: 34rem; /* offset reading column — keeps a gutter for the bear */
+
+  /* Shape */
+  --radius-lg: 1.75rem;
+  --radius-md: 1.15rem;
+  --radius-sm: 0.7rem;
+
+  /* Soft, brown-tinted shadows (no harsh grey) */
+  --shadow-sm: 0 2px 8px -3px rgba(123, 84, 53, 0.14);
+  --shadow-md: 0 14px 30px -16px rgba(123, 84, 53, 0.22);
+  --shadow-lg: 0 28px 60px -28px rgba(123, 84, 53, 0.3);
+
+  /* Motion — custom curves; the built-in CSS eases feel weak */
+  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-quint: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* gentle overshoot / bounce */
+  --dur-hover: 200ms;
+  --dur-reveal: 600ms;
+}

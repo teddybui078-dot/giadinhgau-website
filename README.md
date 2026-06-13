@@ -1,29 +1,59 @@
-# giadinhgau-website
+# Gia Đình Gấu · The Bear Family
 
-Frontend project for **Gia Đình Gấu**. Built in the Frontend Design Lab — see [`CLAUDE.md`](CLAUDE.md) for the design system, motion patterns, stack defaults, and skill routing.
+A single-page family website — minimal, sleek, light-mode, warm and playful. Its
+signature feature is a small 3D bear that floats on top of the page and travels
+a wavy path alongside you as you scroll (inspired by treehacks.com's scroll
+creature), threading the whitespace between sections so it never covers text.
 
-## Status
+## Stack
 
-Foundation set up. The site itself has not been scaffolded yet.
+- **Vite** + **vanilla JS** (ES modules) — static, no framework, no SSR
+- **GSAP** + **ScrollTrigger** — scrub-driven scroll choreography
+- Plain CSS with custom properties (tokens in [`src/css/tokens.css`](src/css/tokens.css))
+- Apple system font stack · brand: bear-brown `#9B6B43`, cream `#FBF7F0`, ink `#2B2320`
 
-## Stack defaults
-
-- **Next.js 16** (App Router, Turbopack)
-- **React 19** + TypeScript 5+
-- **Tailwind v4** via `@tailwindcss/postcss` — theme tokens live in `globals.css` under `@theme {}`, not `tailwind.config.ts`
-- **Motion** (`motion/react`) for animation
-- **@phosphor-icons/react** for icons
-- **React Three Fiber** + `@react-three/drei` for 3D
-
-## Design skills
-
-15 design/skill packs are installed under [`.agents/skills/`](.agents/skills/) and pinned in [`skills-lock.json`](skills-lock.json). Restore them in a fresh checkout with:
+## Develop
 
 ```bash
-npx skills experimental_install
-npx skills list   # should show 15 skills
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # -> dist/  (base: './', deploys to any static host)
+npm run preview    # serve the production build locally
 ```
 
-## Environment
+## Project layout
 
-Copy [`.env.example`](.env.example) to `.env` and fill in real values. `.env` is gitignored — never commit secrets.
+```
+index.html                 sections + #bear + pre-paint reduced-motion script
+src/
+  main.js                  boot: imports CSS, registers plugins, inits modules
+  js/
+    bear.js                ★ the scroll-companion bear (path, scrub, personality)
+    reveal.js              section fade-ins on scroll
+    reducedMotion.js       reads the pre-paint motion preference
+  css/                     tokens · base · bear · sections · components
+public/img/                bear.png (hoodie), bear-plain.png (footer)
+scripts/cutout.mjs         turns the source renders into transparent sprites
+```
+
+## The bear
+
+[`src/js/bear.js`](src/js/bear.js) has a block of tunable constants at the top
+(waves' gutter dwell, band, crossing width, bear size, scrub). The path is
+**section-aware**: the bear dwells in the empty gutter beside each section and
+only crosses sides through the whitespace gap between sections (riding the
+moving seam), which is what keeps it off the text. It's transform-only (GPU),
+respects `prefers-reduced-motion` (parks in the corner with an idle bob), and
+on phones (≤700px) it parks in the corner since a single-column layout has no
+gutter to travel in. Test reduced motion with `?motion=reduce`.
+
+### Swapping the companion sprite
+
+The traveling bear is `public/img/bear.png` (the hooded bear). To swap it for
+the plain bear, replace that file (or repoint the `<img class="bear-img">` src
+in `index.html`). Re-cut either source render with:
+
+```bash
+node scripts/cutout.mjs <source>.png /tmp/out.png   # transparent flood-fill cutout
+sips -Z 320 /tmp/out.png --out public/img/bear.png   # downscale, keeps alpha
+```

@@ -1,0 +1,66 @@
+/* The scroll-companion bear.
+
+   #bear  — the OUTER wrapper. GSAP MotionPath owns its transform exclusively
+            (translate only). It is a direct child of <body>, fixed, on top of
+            everything, and never interactive.
+   .bear-img — the INNER sprite. Its own infinite tweens (sway + bob) live on a
+            separate transform channel so they never fight MotionPath. */
+
+#bear {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  width: 132px; /* desktop default; JS reads this & overrides per breakpoint */
+  pointer-events: none;
+  will-change: transform;
+  /* before JS positions it, tuck it offscreen so it never flashes top-left */
+  visibility: hidden;
+}
+
+/* JS adds this once the first path frame is applied */
+#bear.is-ready {
+  visibility: visible;
+}
+
+.bear-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* soft contact shadow so the bear feels like it floats above the page */
+  filter: drop-shadow(0 14px 16px rgba(123, 84, 53, 0.28));
+  transform-origin: 50% 80%; /* sway pivots near the feet, like a real lean */
+  will-change: transform;
+}
+
+/* Reduced-motion / very small screens: park the bear in the corner with only a
+   faint idle bob. No scroll travel, no MotionPath. */
+#bear.bear--corner {
+  top: auto;
+  bottom: clamp(0.75rem, 3vw, 1.75rem);
+  right: clamp(0.75rem, 3vw, 1.75rem);
+  left: auto;
+  width: clamp(84px, 18vw, 116px);
+  transform: none !important; /* defeat any stale MotionPath transform */
+  visibility: visible;
+}
+#bear.bear--corner .bear-img {
+  animation: bear-bob 3.4s var(--ease-in-out-quint) infinite;
+}
+
+@keyframes bear-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.5deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(1.5deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bear-img {
+    /* even if the corner class isn't applied, never let it whip around */
+    animation: bear-bob 4s ease-in-out infinite;
+  }
+}
