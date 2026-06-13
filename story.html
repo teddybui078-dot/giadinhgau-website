@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Story · Gia Đình Gấu</title>
+    <meta
+      name="description"
+      content="How a too-small kitchen and a soup pot that always stretched became the Bear Family — the long version, with the whole timeline."
+    />
+    <meta name="theme-color" content="#fbf7f0" />
+    <link rel="icon" type="image/png" href="./img/bear.png" />
+    <script>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add("js");
+        var q = new URLSearchParams(location.search);
+        var reduce =
+          q.get("motion") === "reduce" ||
+          (window.matchMedia &&
+            matchMedia("(prefers-reduced-motion: reduce)").matches);
+        d.classList.add(reduce ? "reduced-motion" : "motion-ok");
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="visually-hidden" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-header__brand" href="./index.html">Gia Đình <span class="accent">Gấu</span></a>
+        <nav class="site-nav" aria-label="Sections">
+          <a href="./story.html" aria-current="page">Story</a>
+          <a href="./family.html">Family</a>
+          <a href="./memories.html">Memories</a>
+          <a href="./place.html">Place</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page page--story" id="main">
+      <section class="page-hero">
+        <div class="page-hero__inner">
+          <span class="eyebrow">Our story</span>
+          <h1 class="page-hero__title">How a too-small kitchen became <span class="accent">home</span></h1>
+          <p class="page-hero__lead">
+            Every family has an origin story. Ours involves a rice cooker, a pot
+            of soup that refused to run out, and a table that kept getting longer.
+          </p>
+          <a class="page-back" href="./index.html">← Back home</a>
+        </div>
+      </section>
+
+      <!-- The long version -->
+      <section class="panel" data-panel="story">
+        <div class="panel__inner">
+          <div class="prose">
+            <span class="eyebrow" data-r>The long version</span>
+            <p class="lead-line" data-r>
+              It started, as the best things do, with a kitchen too small for
+              everyone and a pot of soup that somehow always stretched to feed
+              one more.
+            </p>
+            <p data-r>
+              Hùng and Mai arrived with two suitcases, a rice cooker, and a loose
+              plan to figure the rest out as they went. The apartment was small
+              enough that you could stir the soup, answer the door, and turn off
+              the TV without taking a single step. Everyone said it was too
+              cramped. Everyone came over anyway.
+            </p>
+            <p data-r>
+              Over the years the table got longer, the laughs got louder, and the
+              family grew its own gravity. Babies turned into Lego architects.
+              A grandmother moved in with a lifetime of stories. A stray dog took
+              one look at the place and decided it was home.
+            </p>
+            <p data-r>
+              We are not a tidy family. We are a warm one — quick to tease,
+              quicker to forgive, and always five minutes late because someone had
+              to find their other shoe. This is the long version of how we got
+              here, told the way Bà Ngoại tells it: out of order, with too many
+              details, and absolutely worth it.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Timeline -->
+      <section class="panel" data-panel="story">
+        <div class="panel__inner">
+          <div class="section-head">
+            <span class="eyebrow" data-r>Milestones</span>
+            <h2 class="panel__title" data-r>How the years <span class="hl">stacked up</span></h2>
+            <p class="panel__lead" data-r>
+              The short list of moments that made us us — give or take a few
+              hundred ordinary, perfect Tuesdays.
+            </p>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline__item" data-r>
+              <p class="timeline__year">1998</p>
+              <h3 class="timeline__title">Two suitcases and a rice cooker</h3>
+              <p class="timeline__text">Hùng and Mai land with barely more than a plan and a stubborn optimism. The rice cooker is, to this day, still going.</p>
+            </div>
+            <div class="timeline__item" data-r>
+              <p class="timeline__year">2001</p>
+              <h3 class="timeline__title">The kitchen that started it all</h3>
+              <p class="timeline__text">First apartment, first too-small kitchen, first pot of soup that mysteriously fed everyone who showed up. A tradition is born.</p>
+            </div>
+            <div class="timeline__item" data-r>
+              <p class="timeline__year">2004</p>
+              <h3 class="timeline__title">Enter Bảo</h3>
+              <p class="timeline__text">Papa Bear takes up barbecue. It is the world's slowest barbecue. Nobody minds, because the company is the point.</p>
+            </div>
+            <div class="timeline__item" data-r>
+              <p class="timeline__year">2008</p>
+              <h3 class="timeline__title">Enter Linh</h3>
+              <p class="timeline__text">The sticker era begins. So does the running tally of oddly specific whale facts that nobody asked for and everybody now knows.</p>
+            </div>
+            <div class="timeline__item" data-r>
+              <p class="timeline__year">2012</p>
+              <h3 class="timeline__title">Bà Ngoại moves in</h3>
+              <p class="timeline__text">Bedtime stories get longer, better, and occasionally never-ending. House rule established: you do not interrupt the story.</p>
+            </div>
+            <div class="timeline__item" data-r>
+              <p class="timeline__year">2016</p>
+              <h3 class="timeline__title">Cookie adopts us</h3>
+              <p class="timeline__text">A stray dog wanders in, sits down, and refuses to leave. From this day forward, every snack is officially a shared snack.</p>
+            </div>
+            <div class="timeline__item" data-r>
+              <p class="timeline__year">2021</p>
+              <h3 class="timeline__title">The cabin by Pine Lake</h3>
+              <p class="timeline__text">We find the little cabin two hours north. The wifi is terrible. We have never been happier to be unreachable.</p>
+            </div>
+            <div class="timeline__item" data-r>
+              <p class="timeline__year">2026</p>
+              <h3 class="timeline__title">This little website</h3>
+              <p class="timeline__text">A place to keep the good stuff — the faces, the trips, the in-jokes that make no sense to anyone else. Welcome in.</p>
+            </div>
+          </div>
+
+          <div class="pullquote" data-r>
+            <blockquote>The soup always stretches. You just have to set another place.</blockquote>
+            <cite>Mai, on her one unshakeable rule</cite>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer" id="footer" data-panel="story">
+        <div class="site-footer__inner">
+          <p class="site-footer__signoff" data-r>That's the short version.</p>
+          <p class="site-footer__note" data-r>
+            Come meet the people who made all of it worth writing down.
+          </p>
+          <p class="site-footer__copy" data-r>
+            <a href="./family.html">Meet the family →</a>
+          </p>
+          <p class="site-footer__copy" data-r>© <span id="year">2026</span> Gia Đình Gấu · The Bear Family</p>
+        </div>
+      </footer>
+    </main>
+
+    <script type="module" src="/src/page.js"></script>
+  </body>
+</html>

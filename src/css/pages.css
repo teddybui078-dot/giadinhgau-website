@@ -1,0 +1,254 @@
+/* ============================================================
+   Interior pages (Story / Family / Memories / Place)
+   Cream layout, no scroll-video. <main class="page page--x"> sets
+   the section --accent for the whole page.
+   ============================================================ */
+
+.page--story    { --accent: var(--honey); --accent-soft: var(--honey-soft); }
+.page--family   { --accent: var(--sage);  --accent-soft: var(--sage-soft); }
+.page--memories { --accent: var(--berry); --accent-soft: var(--berry-soft); }
+.page--place    { --accent: var(--sky);   --accent-soft: var(--sky-soft); }
+
+/* ---------- Page hero ---------- */
+.page-hero {
+  position: relative;
+  padding: clamp(8rem, 17vh, 12rem) 0 clamp(2.75rem, 7vh, 4.5rem);
+  text-align: center;
+  background:
+    radial-gradient(92% 130% at 50% -22%, var(--accent-soft) 0%, transparent 60%),
+    var(--cream);
+  border-bottom: 1px solid var(--line);
+}
+.page-hero__inner {
+  max-width: 48rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+.page-hero .eyebrow {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: color-mix(in srgb, var(--accent) 66%, var(--ink));
+  padding: 0.42rem 0.95rem;
+  border-radius: 999px;
+  border: 1.5px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.3rem;
+}
+.page-hero .eyebrow::before { display: none; }
+.page-hero__title {
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+.page-hero__title .accent { color: var(--bear-brown); }
+.page-hero__lead {
+  margin: 1.25rem auto 0;
+  max-width: 36rem;
+  font-size: var(--fs-lead);
+  color: var(--ink-soft);
+}
+.page-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 2rem;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.page-back:hover { color: var(--bear-brown); }
+
+/* ---------- Section heading kit (centred) ---------- */
+.section-head {
+  max-width: 46rem;
+  margin: 0 auto clamp(1.75rem, 4vh, 2.75rem);
+  text-align: center;
+}
+.section-head .panel__lead { margin-inline: auto; }
+
+/* ---------- Prose ---------- */
+.prose { max-width: 42rem; margin-inline: auto; }
+.prose p { color: var(--ink-soft); font-size: 1.075rem; }
+.prose p + p { margin-top: 1.15rem; }
+.prose .lead-line {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+  line-height: 1.4;
+  color: var(--ink);
+  margin-bottom: 1.4rem;
+}
+
+/* ---------- Pull quote ---------- */
+.pullquote {
+  max-width: 40rem;
+  margin: clamp(2.5rem, 6vh, 4rem) auto 0;
+  text-align: center;
+}
+.pullquote blockquote {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.4vw, 2.3rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.pullquote blockquote::before { content: "\201C"; color: var(--accent); }
+.pullquote blockquote::after { content: "\201D"; color: var(--accent); }
+.pullquote cite {
+  display: block;
+  margin-top: 1rem;
+  font-style: normal;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* ---------- Timeline (story) ---------- */
+.timeline {
+  max-width: 42rem;
+  margin: 0 auto;
+  position: relative;
+  padding-left: 2rem;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.32rem;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  width: 2px;
+  background: color-mix(in srgb, var(--accent) 35%, var(--line));
+}
+.timeline__item { position: relative; padding-bottom: 2rem; }
+.timeline__item:last-child { padding-bottom: 0; }
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  left: -2rem;
+  top: 0.4rem;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent-soft) 80%, transparent);
+}
+.timeline__year {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: color-mix(in srgb, var(--accent) 78%, var(--ink));
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+.timeline__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  margin: 0.1rem 0 0.4rem;
+}
+.timeline__text { color: var(--ink-soft); }
+
+/* ---------- Member profiles (family) ---------- */
+/* each member gets its own section so it reveals as you reach it, but with a
+   tighter rhythm than the default panel so the page doesn't feel cavernous */
+.panel--profile { padding-block: clamp(2.5rem, 6vh, 4.5rem); }
+.profile {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: center;
+  max-width: 60rem;
+  margin-inline: auto;
+}
+.profile + .profile { margin-top: clamp(3rem, 7vh, 5rem); }
+.profile__photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  border: 6px solid var(--accent-soft);
+  box-shadow: var(--shadow-md);
+  filter: saturate(1.05);
+}
+.profile__name {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.profile__role {
+  display: inline-block;
+  margin: 0.6rem 0 1rem;
+  background: var(--accent-soft);
+  color: color-mix(in srgb, var(--accent) 72%, var(--ink));
+  font-weight: 700;
+  font-size: var(--fs-small);
+  padding: 0.25rem 0.8rem;
+  border-radius: 999px;
+}
+.profile__bio { color: var(--ink-soft); }
+.profile__bio p + p { margin-top: 0.9rem; }
+.profile__facts { margin-top: 1.4rem; display: grid; gap: 0.55rem; }
+.profile__fact {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 0.75rem;
+  align-items: baseline;
+}
+.profile__fact dt {
+  font-weight: 700;
+  color: color-mix(in srgb, var(--accent) 60%, var(--ink));
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+}
+.profile__fact dd { color: var(--ink-soft); font-size: 0.98rem; }
+
+@media (min-width: 760px) {
+  .profile { grid-template-columns: 0.82fr 1fr; }
+  .profile--flip .profile__media { order: 2; }
+}
+
+/* ---------- Albums (memories) ---------- */
+.album + .album { margin-top: clamp(3rem, 8vh, 5.5rem); }
+.album__head { max-width: 44rem; margin: 0 auto 1.6rem; text-align: center; }
+.album__title { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 600; }
+.album__caption { color: var(--ink-soft); margin-top: 0.5rem; }
+
+/* ---------- Place (cabin) ---------- */
+.page--place .map-card {
+  max-width: 52rem;
+  margin: clamp(1.75rem, 4vh, 2.5rem) auto 0;
+}
+
+/* ---------- Place highlights ---------- */
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: clamp(1rem, 2.4vw, 1.6rem);
+  margin-top: 2.25rem;
+}
+.highlight {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 1.4rem 1.4rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+.highlight__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: color-mix(in srgb, var(--accent) 70%, var(--ink));
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin-bottom: 0.85rem;
+}
+.highlight__title { font-family: var(--font-display); font-size: var(--fs-h3); font-weight: 600; }
+.highlight__text { color: var(--ink-soft); margin-top: 0.4rem; font-size: 0.98rem; }
