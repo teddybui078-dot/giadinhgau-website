@@ -34,6 +34,21 @@
 }
 .panel .eyebrow::before { display: none; }
 
+/* "see more" link at the foot of a home teaser → its full interior page */
+.panel__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.6rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: color-mix(in srgb, var(--accent) 68%, var(--ink));
+  transition: gap var(--dur-hover) var(--ease-out-quint),
+    color var(--dur-hover) var(--ease-out-quint);
+}
+.panel__more::after { content: "→"; transition: transform var(--dur-hover) var(--ease-out-quint); }
+.panel__more:hover { color: color-mix(in srgb, var(--accent) 85%, var(--ink)); gap: 0.6rem; }
+
 /* highlighter marker behind a fun word in a title */
 .hl {
   background: linear-gradient(120deg, var(--accent-soft), var(--accent-soft)) no-repeat;
