@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memories · Gia Đình Gấu</title>
+    <meta
+      name="description"
+      content="Sunburns, birthday cakes, and at least one trip where the map was very wrong. A few albums of the Bear Family's good days."
+    />
+    <meta name="theme-color" content="#fbf7f0" />
+    <link rel="icon" type="image/png" href="./img/bear.png" />
+    <script>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add("js");
+        var q = new URLSearchParams(location.search);
+        var reduce =
+          q.get("motion") === "reduce" ||
+          (window.matchMedia &&
+            matchMedia("(prefers-reduced-motion: reduce)").matches);
+        d.classList.add(reduce ? "reduced-motion" : "motion-ok");
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="visually-hidden" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-header__brand" href="./index.html">Gia Đình <span class="accent">Gấu</span></a>
+        <nav class="site-nav" aria-label="Sections">
+          <a href="./story.html">Story</a>
+          <a href="./family.html">Family</a>
+          <a href="./memories.html" aria-current="page">Memories</a>
+          <a href="./place.html">Place</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page page--memories" id="main">
+      <section class="page-hero">
+        <div class="page-hero__inner">
+          <span class="eyebrow">Memories</span>
+          <h1 class="page-hero__title">A few of the <span class="accent">good days</span></h1>
+          <p class="page-hero__lead">
+            Sunburns, birthday cakes, and at least one trip where the map was
+            very wrong. We kept the photos anyway — here they are, by album.
+          </p>
+          <a class="page-back" href="./index.html">← Back home</a>
+        </div>
+      </section>
+
+      <!-- Album: Pine Lake summers -->
+      <section class="panel" data-panel="memories">
+        <div class="panel__inner">
+          <div class="album">
+            <div class="album__head" data-r>
+              <h2 class="album__title">Pine Lake summers</h2>
+              <p class="album__caption">Cold water, warm evenings, and the same argument about board games every single year.</p>
+            </div>
+            <div class="gallery">
+              <figure class="gallery__item" data-r><img src="https://picsum.photos/seed/lake-golden/800/600" alt="The lake at golden hour" loading="lazy" width="800" height="600" /></figure>
+              <figure class="gallery__item" data-r><img src="https://picsum.photos/seed/lake-dock/400/400" alt="The old wooden dock" loading="lazy" width="400" height="400" /></figure>
+              <figure class="gallery__item" data-r><img src="https://picsum.photos/seed/lake-canoe/400/400" alt="A canoe pulled up on the shore" loading="lazy" width="400" height="400" /></figure>
+              <figure class="gallery__item" data-r><img src="https://picsum.photos/seed/lake-campfire/400/400" alt="A campfire after dark" loading="lazy" width="400" height="400" /></figure>
+              <figure class="gallery__item" data-r><img src="https://picsum.photos/seed/lake-pines/400/400" alt="Pine trees against the sky" loading="lazy" width="400" height="400" /></figure>
+              <figure class="gallery__item" data-r><img src="https://picsum.photos/seed/lake-swim/400/400" alt="Footprints heading into the water" loading="lazy" width="400" height="400" /></figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Album: Birthdays & cake disasters -->
+      <section class="panel" data-panel="memories">
+        <div class="panel__inner">
+          <div class="album">
+            <div class="album__head" data-r>
+              <h2 class="album__title">Birthdays &amp; cake disasters</h2>
+              <p class="album__caption">A proud tradition of cakes that look nothing like the picture and taste twice as good.</p>
+            </div>
+            <div class="gallery">
+              <figure class="gallery__item" data-r><img src="https://picsum.photos/seed/cake-candles/800/600" alt="A cake crowded with candles" loading="lazy" width="800" height="600" /></figure>
+              <figure class="gallery__item" data-r><img src="https://picsum.photos/seed/cake-frosting/400/400" alt="A bowl of frosting mid-mix" loading="lazy" width="400" height="400" /></figure>
+              <figure class="gallery__item" data-r><img src="https://picsum.photos/seed/cake-kitchen/400/400" alt="Everyone crowded in the kitchen" loading="lazy" width="400" height="400" /></figure>
+              <figure class="gallery__item" data-r><img src="https://picsum.photos/seed/cake-balloons/400/400" alt="Balloons taped to a doorway" loading="lazy" width="400" height="400" /></figure>
+              <figure class="gallery__item" data-r><img src="https://picsum.photos/seed/cake-table/400/400" alt="A table set for a party" loading="lazy" width="400" height="400" /></figure>
+              <figure class="gallery__item" data-r><img src="https://picsum.photos/seed/cake-slice/400/400" alt="A lopsided slice on a plate" loading="lazy" width="400" height="400" /></figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Album: Road trips (and wrong turns) -->
+      <section class="panel" data-panel="memories">
+        <div class="panel__inner">
+          <div class="album">
+            <div class="album__head" data-r>
+              <h2 class="album__title">Road trips &amp; wrong turns</h2>
+              <p class="album__caption">The map was very wrong at least once. The donuts at the gas station made up for it.</p>
+            </div>
+            <div class="gallery">
+              <figure class="gallery__item" data-r><img src="https://picsum.photos/seed/road-open/800/600" alt="An open road heading into hills" loading="lazy" width="800" height="600" /></figure>
+              <figure class="gallery__item" data-r><img src="https://picsum.photos/seed/road-car/400/400" alt="The packed car at a rest stop" loading="lazy" width="400" height="400" /></figure>
+              <figure class="gallery__item" data-r><img src="https://picsum.photos/seed/road-gas/400/400" alt="A small roadside gas station" loading="lazy" width="400" height="400" /></figure>
+              <figure class="gallery__item" data-r><img src="https://picsum.photos/seed/road-map/400/400" alt="A very crumpled paper map" loading="lazy" width="400" height="400" /></figure>
+              <figure class="gallery__item" data-r><img src="https://picsum.photos/seed/road-diner/400/400" alt="A roadside diner sign" loading="lazy" width="400" height="400" /></figure>
+              <figure class="gallery__item" data-r><img src="https://picsum.photos/seed/road-sunset/400/400" alt="Sunset through the windshield" loading="lazy" width="400" height="400" /></figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer" id="footer" data-panel="memories">
+        <div class="site-footer__inner">
+          <p class="site-footer__signoff" data-r>So many good days.</p>
+          <p class="site-footer__note" data-r>
+            Most of them happened in the same little spot two hours north.
+          </p>
+          <p class="site-footer__copy" data-r>
+            <a href="./place.html">See our favorite place →</a>
+          </p>
+          <p class="site-footer__copy" data-r>© <span id="year">2026</span> Gia Đình Gấu · The Bear Family</p>
+        </div>
+      </footer>
+    </main>
+
+    <script type="module" src="/src/page.js"></script>
+  </body>
+</html>
