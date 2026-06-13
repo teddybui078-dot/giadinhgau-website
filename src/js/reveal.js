@@ -15,12 +15,30 @@ export function initReveals({ reduced }) {
 
   const groups = document.querySelectorAll('[data-panel]');
   groups.forEach((group) => {
+    // The whole content card slides up + fades in as the section enters view,
+    // then its inner items stagger in on top of that.
+    const card = group.querySelector('.panel__content');
+    if (card) {
+      gsap.fromTo(
+        card,
+        { autoAlpha: 0, y: 56 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.85,
+          ease: 'power3.out',
+          clearProps: 'transform,opacity,visibility',
+          scrollTrigger: { trigger: group, start: 'top 82%', once: true },
+        }
+      );
+    }
+
     const items = group.querySelectorAll('[data-r]');
     if (!items.length) return;
 
     gsap.fromTo(
       items,
-      { autoAlpha: 0, y: 42 },
+      { autoAlpha: 0, y: 28 },
       {
         autoAlpha: 1,
         y: 0,

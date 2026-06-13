@@ -5,8 +5,8 @@
 .panel {
   position: relative;
   padding-block: var(--space-section);
-  /* transparent — the fixed video backdrop shows through the gaps between
-     the floating content cards (see playful.css / hero-video.css) */
+  /* clear the fixed header when a nav link jumps to this section */
+  scroll-margin-top: 4.5rem;
 }
 
 .panel__inner {

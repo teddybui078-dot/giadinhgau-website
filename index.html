@@ -34,8 +34,22 @@
   <body>
     <a class="visually-hidden" href="#story">Skip to content</a>
 
-    <!-- Fixed cinematic backdrop. The clip scrubs across the whole page; all
-         content floats over it. Direct child of <body> so it stays put. -->
+    <!-- Solid sticky header — always visible above the hero and the page. -->
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-header__brand" href="#top">Gia Đình <span class="accent">Gấu</span></a>
+        <nav class="site-nav" aria-label="Sections">
+          <a href="#story">Story</a>
+          <a href="#family">Family</a>
+          <a href="#memories">Memories</a>
+          <a href="#place">Place</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Fixed cinematic backdrop. The clip scrubs only across the hero (it's
+         pinned while the video plays through); the .page-body below scrolls up
+         over it on solid cream. Direct child of <body> so it stays put. -->
     <div class="scrub-backdrop" aria-hidden="true">
       <video
         id="scrub-video"
@@ -54,11 +68,12 @@
         <div class="hero-overlay">
           <div class="hero-overlay__scrim" aria-hidden="true"></div>
           <div class="hero-overlay__content">
-            <span class="eyebrow" data-r>Welcome home</span>
+            <span class="eyebrow" data-r>Come on in!</span>
             <h1 class="wordmark" data-r>Gia Đình <span class="accent">Gấu</span></h1>
             <p class="hero__sub" data-r>The Bear Family</p>
             <p class="hero__lead" data-r>
-              A warm little home for the people we love most — scroll on in.
+              Five bears, one dog, and a soup pot that never runs out. We saved
+              you a seat — come scroll a while.
             </p>
           </div>
           <span class="scroll-hint" aria-hidden="true">
@@ -76,11 +91,14 @@
         />
       </section>
 
+      <!-- Everything below the hero scrolls on solid cream, covering the
+           fixed video once the hero's scroll animation has played out. -->
+      <div class="page-body">
       <!-- ============ OUR STORY ============ -->
-      <section class="panel panel--right panel--text" id="story" data-panel="story">
+      <section class="panel panel--text" id="story" data-panel="story">
         <div class="panel__inner">
           <div class="panel__content">
-            <span class="eyebrow" data-r>🍯 Our story</span>
+            <span class="eyebrow" data-r>Our story</span>
             <h2 class="panel__title" data-r>How it <span class="hl">all began</span></h2>
             <p class="body" data-r>
               It started, as the best things do, with a kitchen too small for
@@ -102,10 +120,10 @@
       </section>
 
       <!-- ============ THE FAMILY ============ -->
-      <section class="panel panel--left" id="family" data-panel="family">
+      <section class="panel" id="family" data-panel="family">
         <div class="panel__inner">
           <div class="panel__content">
-            <span class="eyebrow" data-r>🌿 The family</span>
+            <span class="eyebrow" data-r>The family</span>
             <h2 class="panel__title" data-r>The whole, <span class="hl">lovely bunch</span></h2>
             <p class="panel__lead" data-r>
               Six personalities, one couch, infinite opinions on what to watch.
@@ -158,19 +176,11 @@
         </div>
       </section>
 
-      <!-- ============ MARQUEE ============ -->
-      <div class="marquee" aria-hidden="true">
-        <div class="marquee__track">
-          <span>Gia Đình Gấu <i class="star">✦</i> The Bear Family <i class="star">✦</i> warm &amp; fuzzy since forever <i class="star">✦</i>&nbsp;</span>
-          <span>Gia Đình Gấu <i class="star">✦</i> The Bear Family <i class="star">✦</i> warm &amp; fuzzy since forever <i class="star">✦</i>&nbsp;</span>
-        </div>
-      </div>
-
       <!-- ============ MEMORIES / GALLERY ============ -->
-      <section class="panel panel--right" id="memories" data-panel="memories">
+      <section class="panel" id="memories" data-panel="memories">
         <div class="panel__inner">
           <div class="panel__content">
-            <span class="eyebrow" data-r>📸 Memories</span>
+            <span class="eyebrow" data-r>Memories</span>
             <h2 class="panel__title" data-r>A few of the <span class="hl">good days</span></h2>
             <p class="panel__lead" data-r>
               Sunburns, birthday cakes, and at least one trip where the map was
@@ -190,11 +200,11 @@
       </section>
 
       <!-- ============ A FAVORITE PLACE ============ -->
-      <section class="panel panel--left panel--text" id="place" data-panel="place">
+      <section class="panel panel--text" id="place" data-panel="place">
         <div class="panel__inner">
           <div class="panel__content place">
             <div>
-              <span class="eyebrow" data-r>📍 A favorite place</span>
+              <span class="eyebrow" data-r>A favorite place</span>
               <h2 class="panel__title" data-r>The cabin by <span class="hl">Pine Lake</span></h2>
               <p class="body" data-r>
                 Two hours north, past the gas station with the good donuts, sits
@@ -226,6 +236,7 @@
           <p class="site-footer__copy" data-r>© <span id="year">2026</span> Gia Đình Gấu · The Bear Family</p>
         </div>
       </footer>
+      </div><!-- /.page-body -->
     </main>
 
     <script type="module" src="/src/main.js"></script>

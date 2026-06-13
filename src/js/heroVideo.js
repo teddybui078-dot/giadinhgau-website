@@ -4,10 +4,11 @@ import { createVideoScrubber, createCanvasScrubber } from './scrubVideo.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* The cinematic clip plays across the WHOLE page: it's a fixed full-viewport
-   backdrop, and scroll progress (top → bottom of the document) is mapped to the
+/* The cinematic clip plays out entirely within the HERO: the hero is pinned
+   while you scroll ~1.2 viewports, and that pinned scroll is mapped to the
    clip's currentTime, so the camera pushes through the forest, to the cabin,
-   and reveals the bears right as you reach the footer. Content floats over it.
+   and reveals the bears — all before the pin releases. Once it does, the
+   .page-body scrolls up over the (now-static) fixed backdrop on solid cream.
 
    currentTime is eased in scrubVideo.js's own rAF loop (one seek per presented
    frame) for smoothness; ScrollTrigger only writes the target progress. */
@@ -34,30 +35,24 @@ export async function initHeroVideo() {
   // the collapsing mobile URL bar changes vh; don't refresh (and jump) on it
   ScrollTrigger.config({ ignoreMobileResize: true });
 
-  // whole-page scrub: progress 0→1 across the entire document scroll
+  // hero-only scrub: pin the hero and map ~1.2 viewports of pinned scroll to the
+  // clip's progress 0→1. The wordmark fades out over the first third of that.
   const st = ScrollTrigger.create({
-    trigger: document.documentElement,
+    trigger: heroSection,
     start: 'top top',
-    end: 'bottom bottom',
+    end: '+=120%',
+    pin: true,
     scrub: true,
     invalidateOnRefresh: true,
-    onUpdate: (self) => scrubber.setProgress(self.progress),
-  });
-
-  // hero wordmark fades out over the first viewport of scroll
-  if (overlay && heroSection) {
-    ScrollTrigger.create({
-      trigger: heroSection,
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true,
-      onUpdate: (self) => {
-        const f = 1 - Math.min(1, self.progress / 0.7);
+    onUpdate: (self) => {
+      scrubber.setProgress(self.progress);
+      if (overlay) {
+        const f = 1 - Math.min(1, self.progress / 0.34);
         overlay.style.opacity = String(f);
         overlay.style.pointerEvents = f < 0.05 ? 'none' : '';
-      },
-    });
-  }
+      }
+    },
+  });
 
   try {
     await scrubber.ready;

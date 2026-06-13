@@ -6,11 +6,10 @@ import './css/playful.css';
 import './css/hero-video.css';
 
 import { prefersReducedMotion } from './js/reducedMotion.js';
+import { initSiteChrome } from './js/header.js';
 
 async function boot() {
-  // Tiny housekeeping that should run regardless of motion preference.
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+  initSiteChrome();
 
   const reduced = prefersReducedMotion();
 

@@ -1,6 +1,6 @@
-/* Playful layer — color pops, pill labels, translucent content cards that float
-   over the video backdrop, a marquee, and bouncy accents. Each content section
-   carries an --accent. */
+/* Playful layer — color pops, pill labels, and softly-tinted content cards.
+   Each content section carries an --accent. The video lives only in the hero;
+   below it these cards are centred on the solid cream page. */
 
 [data-panel] {
   --accent: var(--bear-brown);
@@ -11,15 +11,14 @@
 [data-panel="memories"] { --accent: var(--berry); --accent-soft: var(--berry-soft); }
 [data-panel="place"]    { --accent: var(--sky);   --accent-soft: var(--sky-soft); }
 
-/* content floats over the video on a translucent, faintly-tinted cream card,
-   so the animation stays visible in the generous gaps between sections */
+/* each content section is a soft, accent-tinted card, centred on the cream page */
 .panel__content,
 .site-footer__inner {
-  background: color-mix(in srgb, var(--accent-soft) 22%, rgba(251, 247, 240, 0.9));
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: color-mix(in srgb, var(--accent-soft) 30%, var(--paper));
+  border: 1px solid color-mix(in srgb, var(--accent) 12%, var(--line));
   border-radius: var(--radius-lg);
   padding: clamp(1.6rem, 4vw, 3rem);
-  box-shadow: 0 28px 70px -36px rgba(60, 45, 35, 0.55);
+  box-shadow: var(--shadow-md);
 }
 
 /* eyebrow → playful pill chip in the section accent */
@@ -44,35 +43,3 @@
   border-radius: 0.25em;
 }
 
-/* ---------- marquee strip ---------- */
-.marquee {
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  background: var(--bear-brown);
-  color: var(--cream);
-  padding-block: clamp(0.9rem, 2.2vh, 1.4rem);
-  display: flex;
-}
-.marquee__track {
-  display: inline-flex;
-  align-items: center;
-  gap: 2.2rem;
-  white-space: nowrap;
-  padding-right: 2.2rem;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.05rem, 2.6vw, 1.7rem);
-  letter-spacing: -0.01em;
-  will-change: transform;
-}
-.motion-ok .marquee__track { animation: marquee 26s linear infinite; }
-.marquee__track > span { display: inline-flex; align-items: center; gap: 2.2rem; }
-.marquee .star { color: var(--honey); font-style: normal; }
-@keyframes marquee {
-  to { transform: translateX(-50%); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee__track { animation: none !important; }
-}
